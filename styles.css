@@ -1,0 +1,46 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    
+}
+
+.container-calculator {
+    /* border: 3px solid red; */
+    width: auto;
+    height: auto;
+}
+
+.container-calculator-screen {
+    /* border: 3px green solid; */
+    width: auto;
+    height: auto;
+    border-radius: 40px;
+}
+
+.calculator-buttons {
+    /* border: 3px purple solid; */
+    width: auto;
+    height: 80vh;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+button {
+    width: 100px;
+    height: 100px;
+    border: none;
+    border-radius: 30px;
+}
+
+button:nth-child(20) {
+    
+}
+
+input {
+    width: 95vw;
+    padding: 20px;
+}
