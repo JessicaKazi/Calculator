@@ -14,6 +14,7 @@ function equalCal(){
     try{
         display.value = eval(display.value);
     }
+    // The eval() method evaluates or executes an argument.
     catch(error){
         display.value = "Error";
     }

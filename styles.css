@@ -15,20 +15,28 @@ body {
 
 #calculator {
     font-family: Arial, sans-serif;
-    background-color: #b3c9d6;
-    border-radius: 15px;
-    border: white solid 2px;
-    max-width: 500px;
+    background-color: #16131f;
+    border-radius: 30px;
+    border: none;
+    width: 268px;
+    padding: 15px;
+    box-shadow: inset 5px 5px 12px #ffff
+                 inset 5px 5px 12px rgba(0, 0, 0, .16);
     overflow: hidden;  
 }
 
 #calculatorScreen {
     width: 100%;
     padding: 20px;
-    font-size: 5rem;
+    font-size: 40px;
+    margin: auto;
     border: none;
-    background-color: #b3c9d6;
+    border-radius: 30px;
+    box-shadow: inset -5px -5px 12px #ffff
+                 inset 5px 5px 12px rgba(0, 0, 0, .16);
+    background-color: #c1a0ac;
     color: black;
+    text-align: end;
 }
 
 #buttons {
@@ -39,13 +47,15 @@ body {
 }
 
 button {
-    width: 100px;
-    height: 50px;
-    border-radius: 50px;
-    border: none;
-    background-color: hsl(0, 0%, 30%);
-    color: white;
-    font-size: 3rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px black solid;
+    background-color: #c1a0ac;
+    box-shadow: inset -5px -5px 12px #ffff
+                 inset 5px 5px 12px rgba(0, 0, 0, .16);
+    color: black;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -59,7 +69,7 @@ button:active{
 }
 
 .operator-btn{
-    background-color: #697c70;
+    background-color: #c1a0ac;
 }
 
 .operator-btn:hover{
