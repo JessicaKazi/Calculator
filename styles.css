@@ -92,3 +92,14 @@ button:active{
         height: 90%;
     }
 }
+
+@media (max-width: 269px) {
+      #calculator {
+        width: 100px;
+    }
+
+    #button {
+        width: 50%;
+        height: 40%;
+    }
+}
