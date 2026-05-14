@@ -1,89 +1,58 @@
-const display = document.getElementById("calculatorScreen");
+const displayView = document.getElementById("calculatorScreen");
 
-const buttonValues = [
-    "C", "√", "**", "*", 
-    "7", "8", "9", "/",
-    "4", "5", "6", "-",
-    "1", "2", "3", "+",
-    "0", ".", "="
-];
-
-const rightSymbols = ["/", "*", "-", "+", "="];
-const topSymbols = ["C", "√", "**"];
-
-
-let A = 0;
-let operator = null;
-let B = null;
-
-function clearSum() {
-    A = null;
-    operator = null;
-    B = null;
+function appendToDisplay(input){
+    displayView.value += input
 }
 
-for (let i = 0; i < buttonValues.length; i++) {
-    let value = buttonValues[i];
-    let button = document.createElement("button");
-    button.innerText = value;
+function clearSum () {
+  displayView.value = ""
 }
 
-button.addEventListener("click", function() {
-        if (rightSymbols.includes(value)) { 
-            if (value == "=") {
-                if (A != null) {
-                    B = display.value;
-                    let numA = Number(A);
-                    let numB = Number(B);
+function equalCal () {
+  
+}
 
-                    if (operator == "/") {
-                        display.value = numA/numB;
-                    }
-                    else if (operator == "*") {
-                        display.value = numA*numB;
-                    }
-                    else if (operator == "-") {
-                        display.value = numA-numB;
-                    }
-                    else if (operator == "+") {
-                        display.value = numA+numB;
-                    }
-                    clearAll();
-                  }
-            }
-            else {
-                operator = value; 
-                A = display.value;
-                display.value = "";
-            }
-        }
-        else if (topSymbols.includes(value)) { 
-            if (value == "C") {
-                clearAll();
-                display.value = "";
-            }
-            else if (value == "√") {
-                
-            }
-            else if (value == "**") {
-                display.value = Math.sqrt(Number)
-            }
-        }
-        else {
-            if (value == ".") {
-                
-                if (display.value != "" && !display.value.includes(value)) {
-                    display.value += value;
-                }
-            }
-            
-            else if (display.value == "0") {
-                display.value = value;
-            }
-            else {
-                display.value += value;
-            }
-        }
-    });
+function calculateTheSum() {
+  // the regex keeps the operate after the spilt removes them
+  const SumOperator = displayView.value.split(/(\^2|[+\-*/√^]+)/); 
+  let sum = parseFloat(SumOperator[0]);
 
-    document.getElementById("buttons").appendChild(button);
+  for (let i = 1; i < SumOperator.length; i+=2 ) {
+    const operators = SumOperator[i];
+    const secondSum = parsefloat(SumOperator[i+1]);
+
+    if (SumOperator === '+') {
+      sum += secondSum;  
+    } 
+    else if (SumOperator === "-") {
+      sum -= secondSum;
+    } 
+    else if (SumOperator === "*") {
+      sum *= secondSum;
+    } 
+    else if (SumOperator === "/") {
+      if (secondSum == 0) {
+        return displayView.value="error"
+      } 
+      else {
+        sum /= secondSum;
+      }
+    } 
+    else if (SumOperator === "^") {
+      sum = Math.pow(sum, secondSum);
+    } 
+    else if (SumOperator === "^2") {
+      sum = Math.pow(secondSum, 2);
+    } 
+    else if (SumOperator === "√") {
+      if (isNaN(sum)) {
+        sum = Math.sqrt(secondSum)
+      } 
+      else {
+        sum *= Math.sqrt(secondSum)
+      }
+    }
+  }
+  displayView.value = sum
+}
+
