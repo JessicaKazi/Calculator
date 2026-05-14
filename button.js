@@ -1,30 +1,89 @@
-// targeting the input to display the sum of numbers
-
 const display = document.getElementById("calculatorScreen");
 
-function displayScreen(input){
-    display.value += input;
+const buttonValues = [
+    "C", "√", "**", "*", 
+    "7", "8", "9", "/",
+    "4", "5", "6", "-",
+    "1", "2", "3", "+",
+    "0", ".", "="
+];
+
+const rightSymbols = ["/", "*", "-", "+", "="];
+const topSymbols = ["C", "√", "**"];
+
+
+let A = 0;
+let operator = null;
+let B = null;
+
+function clearSum() {
+    A = null;
+    operator = null;
+    B = null;
 }
 
-function clearSum(){
-    display.value = "";
+for (let i = 0; i < buttonValues.length; i++) {
+    let value = buttonValues[i];
+    let button = document.createElement("button");
+    button.innerText = value;
 }
 
-function equalCal(){
-    try{
-        display.value = eval(display.value);
-    }
-    // The eval() method evaluates or executes an argument.
-    catch(error){
-        display.value = "Error";
-    }
-}
+button.addEventListener("click", function() {
+        if (rightSymbols.includes(value)) { 
+            if (value == "=") {
+                if (A != null) {
+                    B = display.value;
+                    let numA = Number(A);
+                    let numB = Number(B);
 
+                    if (operator == "/") {
+                        display.value = numA/numB;
+                    }
+                    else if (operator == "*") {
+                        display.value = numA*numB;
+                    }
+                    else if (operator == "-") {
+                        display.value = numA-numB;
+                    }
+                    else if (operator == "+") {
+                        display.value = numA+numB;
+                    }
+                    clearAll();
+                  }
+            }
+            else {
+                operator = value; 
+                A = display.value;
+                display.value = "";
+            }
+        }
+        else if (topSymbols.includes(value)) { 
+            if (value == "C") {
+                clearAll();
+                display.value = "";
+            }
+            else if (value == "√") {
+                
+            }
+            else if (value == "**") {
+                display.value = Math.sqrt(Number)
+            }
+        }
+        else {
+            if (value == ".") {
+                
+                if (display.value != "" && !display.value.includes(value)) {
+                    display.value += value;
+                }
+            }
+            
+            else if (display.value == "0") {
+                display.value = value;
+            }
+            else {
+                display.value += value;
+            }
+        }
+    });
 
-
-// targeting the input to display the sum of numbers
-
-// targeting the buttons to function when clicked on
-
-
-// targeting the buttons to function when clicked on
+    document.getElementById("buttons").appendChild(button);
